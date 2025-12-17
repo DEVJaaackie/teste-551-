@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Coração para Você</title>
+    <meta name="language" content="pt-BR">
+    <meta name="title" content="Um Coração para Você">
+    <meta name="description" content="Uma pequena animação de coração para alguém especial.">
+    <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/img/20210715233345.png">
+    <link rel="stylesheet" href="css/love.css">
+    <!-- Link para a fonte 'Great Vibes' do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        /* Efeito de animação de fade-in */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilo do texto "Eu te amo" */
+        .love-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: red;
+            text-align: center;
+            margin-top: 40px;
+            font-weight: bold;
+            animation: fadeIn 3s ease-out;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Estilo do texto "Clique aqui, meu amor" */
+        .click-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            animation: fadeIn 3s ease-out;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            cursor: pointer; /* Indicando que é clicável */
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Remover o sublinhado e contorno do link */
+        a {
+            text-decoration: none; /* Remove a linha azul (sublinhado) */
+            outline: none; /* Remove o contorno (borda) que aparece ao clicar */
+        }
+
+        /* Layout das imagens em caixas no canto esquerdo e direito */
+        .image-wrapper {
+            position: absolute;
+            top: 120px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 30px;
+            z-index: 5;
+        }
+
+        /* Estilo das caixas das imagens à esquerda e à direita */
+        .left-images, .right-images {
+            display: flex;
+            flex-direction: column;
+            gap: 300px; /* Aumentando o espaçamento entre as imagens */
+        }
+
+        .image-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer; /* Indicando que as imagens são clicáveis */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Efeito ao clicar na imagem */
+        .image-container.clicked {
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        /* Ajuste para o coração animado */
+        .heart-container {
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Ajustando o gif */
+        .heart-container img {
+            width: 300px;
+            height: auto;
+            display: block;
+        }
+
+        /* Responsividade para telas pequenas */
+        @media (max-width: 768px) {
+            .love-text {
+                font-size: 2.5rem;
+                margin-top: 30px;
+            }
+
+            .click-text {
+                font-size: 1.5rem;
+            }
+
+            .image-wrapper {
+                top: 150px; /* Ajuste da posição do contêiner das imagens */
+                padding: 0 10px;
+            }
+
+            .left-images, .right-images {
+                gap: 10px; /* Reduzindo o espaçamento entre as imagens para dispositivos móveis */
+                align-items: center; /* Centralizando as imagens em dispositivos menores */
+            }
+
+            .image-container {
+                width: 90px;
+                height: 90px;
+            }
+
+            .heart-container img {
+                width: 250px; /* Ajustando o tamanho do coração para dispositivos móveis */
+            }
+        }
+
+        /* Estilo do botão de link */
+        .click-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            animation: fadeIn 3s ease-out;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mute-button">&#128266;</div>
+
+    <!-- Texto "Eu te amo" -->
+    <div class="love-text">
+        Eu te amo
+    </div>
+
+    <!-- Seção com as imagens organizadas em caixas -->
+    <div class="image-wrapper">
+        <!-- Imagens à esquerda -->
+        <div class="left-images">
+            <div class="image-container" onclick="clickImage(this)">
+                <img src="images4.jpg" alt="Imagem 1">
+            </div>
+            <div class="image-container" onclick="clickImage(this)">
+                <img src="images2.jpg" alt="Imagem 2">
+            </div>
+        </div>
+
+        <!-- Imagens à direita -->
+        <div class="right-images">
+            <div class="image-container" onclick="clickImage(this)">
+                <img src="images4.jpg" alt="Imagem 3">
+            </div>
+            <div class="image-container" onclick="clickImage(this)">
+                <img src="images1.jpg" alt="Imagem 4">
+            </div>
+        </div>
+    </div>
+
+    <!-- Coração animado e gif abaixo -->
+    <div class="heart-container">
+        <img src="caminho/para/o/seu/gif.gif" alt="" ondragstart='return false;'>
+    </div>
+
+    <!-- Texto "Clique aqui, meu amor" com link -->
+    <a href="pagina_destino1.html" target="_blank">
+        <div class="click-text">
+            Clique aqui, meu amor
+        </div>
+    </a>
+
+    <!-- Outro conteúdo -->
+    <div id="petal-container"></div>
+    <audio id="audios" loop preload="auto">
+        <source src="Taylor Swift - The Way I Loved You (Taylor's Version) (Lyric Video) - Taylor Swift (youtube).mp3" />
+    </audio>
+
+    <div class="container" onselectstart="return false;" unselectable="on" style="-moz-user-select:none;">
+        <div class="body_left">
+            <img data-src="images/biubiubiu.gif" alt="" ondragstart='return false;'>
+        </div>
+
+        <div class="body_center love">
+            <div class="block">
+                <div class="div1"></div>
+                <div class="div2"></div>
+                <div class="div3"></div>
+                <div class="div4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/love.js"></script>
+    <script>
+        // Função para fazer a imagem desaparecer ao ser clicada
+        function clickImage(element) {
+            element.classList.add('clicked');
+        }
+    </script>
+</body>
+</html>
